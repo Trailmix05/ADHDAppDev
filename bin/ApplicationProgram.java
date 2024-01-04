@@ -1,50 +1,41 @@
 import java.util.Scanner;
+import java.io.File;
 
 public class ApplicationProgram {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         User account = new User();
-        boolean validInputs = false;
+        Task tasks = new Task();
 
-        System.out.println("Welcome!" + "\n1 - Login" + "\n2 - Create an account");
-        if (input.nextInt() == 2) {
-            System.out.println(
-                    "Hello! Thank you for your choice in using my application. This is a personal project that I am developing and publishing solo. I started sharing a lot of similar signs to ADHD, and I thought of a very simple system to make sure that I was doing the tasks in my task manger. Have a reward system! When you have a reward, you feel more motivated to do something since you know there will be compensation. This is very similar to an allowence, doing a task, and then getting a sum of money in return. For this task manager, each task will be associated to a difficulty. Depending on the difficulty, you can get more or less points. The points are collected in order to get to milestones(the reward). The user chooses their tasks, the difficulty, and which milestones reward what.\nThis application is completely based on trust. There is no purpose to setting all of the tasks to the highest difficulty just to get more points.\n//THIS APPLICATION IS SUSCEPTIBLE TO CHANGE AND UPDATES\\\\ \n\nFirst, please enter:\n-Username:\n-First Name:\n-Last Name:\n-Age:\n-Gender\n-Password:\n\nAll in that order");
-            userInformation(account);
-            System.out.println("How many tasks would you like to keep track of? Please enter a whole number");
-            Task tasks = new Task(input.nextInt());
-            while (validInputs == false) {
-                saveTasks(tasks);
-                showTasks(tasks);
-                System.out.println("Is this correct?\n1 - Yes\n2 - No");
-                if (input.nextInt() == 1) {
-                    validInputs = true;
-                }
+
+        File f = new File("uData.txt");
+        if (!f.exists() && !f.isDirectory()) {
+                System.out.println(
+                        "Hello! Thank you for your choice in using my application. This is a personal project that I am developing and publishing solo. I started sharing a lot of similar signs to ADHD, and I thought of a very simple system to make sure that I was doing the tasks in my task manger. Have a reward system! When you have a reward, you feel more motivated to do something since you know there will be compensation. This is very similar to an allowence, doing a task, and then getting a sum of money in return. For this task manager, each task will be associated to a difficulty. Depending on the difficulty, you can get more or less points. The points are collected in order to get to milestones(the reward). The user chooses their tasks, the difficulty, and which milestones reward what.\nThis application is completely based on trust. There is no purpose to setting all of the tasks to the highest difficulty just to get more points.\n//THIS APPLICATION IS SUSCEPTIBLE TO CHANGE AND UPDATES\\\\ \n\nFirst, please enter:\n-Username:\n-First Name:\n-Last Name:\n-Age:\n-Gender\n-Password:\n\nAll in that order");
+                userInformation(account);
+                createTaskTree(tasks);
+                System.out.println(
+                        "The milestone system works on a 1000 points system.\nFor each difficulty level that is attributed, there is a certain number of points given when the a task of that difficulty is done:"
+                                + "\n    0 - 3"
+                                + "\n    1 - 5"
+                                + "\n    2 - 8"
+                                + "\n    3 - 12"
+                                + "\n    4 - 20"
+                                + "\n    5 - 25"
+                                + "\n    6 - 30"
+                                + "\n    7 - 35"
+                                + "\n    8 - 40"
+                                + "\n    9 - 45"
+                                + "\n    10 - 50"
+                                + "\nThe milestones are at:"
+                                + "\n    50 points"
+                                + "\n    100 points"
+                                + "\n    300 points"
+                                + "\n    500 points"
+                                + "\n    800 points"
+                                + "\n    1000 points");
             }
-            System.out.println(
-                    "The milestone system works on a 1000 points system.\nFor each difficulty level that is attributed, there is a certain number of points given when the a task of that difficulty is done:"
-                            + "\n    0 - 3"
-                            + "\n    1 - 5"
-                            + "\n    2 - 8"
-                            + "\n    3 - 12"
-                            + "\n    4 - 20"
-                            + "\n    5 - 25"
-                            + "\n    6 - 30"
-                            + "\n    7 - 35"
-                            + "\n    8 - 40"
-                            + "\n    9 - 45"
-                            + "\n    10 - 50"
-                            + "\nThe milestones are at:"
-                            + "\n    50 points"
-                            + "\n    100 points"
-                            + "\n    300 points"
-                            + "\n    500 points"
-                            + "\n    800 points"
-                            + "\n    1000 points");
-        } else if (input.nextInt() == 1){
-            System.out.println("Please enter your password");
         }
-    }
 
     public static void userInformation(User pfUser) {
         Scanner input = new Scanner(System.in);
@@ -105,6 +96,21 @@ public class ApplicationProgram {
             pfTasks.arrayTasks[j][1] = Difficulty;
             j++;
         }
+    }
+
+    public static void createTaskTree(Task pfTask){
+        boolean validInputs = false;
+
+        System.out.println("How many tasks would you like to keep track of? Please enter a whole number");
+        Scanner input = new Scanner(System.in);
+                while (validInputs == false) {
+                    saveTasks(pfTask);
+                    showTasks(pfTask);
+                    System.out.println("Is this correct?\n1 - Yes\n2 - No");
+                    if (input.nextInt() == 1) {
+                        validInputs = true;
+                    }
+                }
     }
 
     public static int getNbrTasks(Task tasks) {
