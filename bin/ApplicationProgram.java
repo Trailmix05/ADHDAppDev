@@ -5,14 +5,14 @@ public class ApplicationProgram {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         User account = new User();
-        Task tasks = new Task();
+        Task tasks;
 
         File f = new File("uData.txt");
         if (!f.exists() && !f.isDirectory()) {
             System.out.println(
                     "Hello! Thank you for your choice in using my application. This is a personal project that I am developing and publishing solo. I started sharing a lot of similar signs to ADHD, and I thought of a very simple system to make sure that I was doing the tasks in my task manger. Have a reward system! When you have a reward, you feel more motivated to do something since you know there will be compensation. This is very similar to an allowence, doing a task, and then getting a sum of money in return. For this task manager, each task will be associated to a difficulty. Depending on the difficulty, you can get more or less points. The points are collected in order to get to milestones(the reward). The user chooses their tasks, the difficulty, and which milestones reward what.\nThis application is completely based on trust. There is no purpose to setting all of the tasks to the highest difficulty just to get more points.\n//THIS APPLICATION IS SUSCEPTIBLE TO CHANGE AND UPDATES\\\\ \n\nFirst, please enter:\n-Username:\n-First Name:\n-Last Name:\n-Age:\n-Gender\n-Password:\n\nAll in that order");
             userInformation(account);
-            createTaskTree(tasks);
+            tasks = createTaskTree();
             System.out.println(
                     "The milestone system works on a 1000 points system.\nFor each difficulty level that is attributed, there is a certain number of points given when the a task of that difficulty is done:"
                             + "\n    0 - 3"
@@ -35,6 +35,7 @@ public class ApplicationProgram {
                             + "\n    1000 points");
 
         }
+        milestonesRewardsAndInfoInit();
     }
 
     public static void milestonesRewardsAndInfoInit() {
@@ -215,19 +216,25 @@ public class ApplicationProgram {
         }
     }
 
-    public static void createTaskTree(Task pfTask) {
+    public static Task createTaskTree() {
         boolean validInputs = false;
+        String placeholder;
+        int nbrTasks;
 
         System.out.println("How many tasks would you like to keep track of? Please enter a whole number");
         Scanner input = new Scanner(System.in);
+        nbrTasks = input.nextInt();
+        Task tasks = new Task(nbrTasks);
         while (validInputs == false) {
-            saveTasks(pfTask);
-            showTasks(pfTask);
+            saveTasks(tasks);
+            showTasks(tasks);
             System.out.println("Is this correct?\n1 - Yes\n2 - No");
             if (input.nextInt() == 1) {
                 validInputs = true;
             }
         }
+
+        return tasks;
     }
 
     public static int getNbrTasks(Task tasks) {
