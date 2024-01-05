@@ -52,53 +52,52 @@ public class ApplicationProgram {
 
     }
 
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
     /*---------------------------------- Milestones ---------------------------------*/
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
     public static void milestonesRewardsAndInfoInit() {
         Milestone milestone = new Milestone();
         boolean verifiedMilestones = false;
         Scanner input = new Scanner(System.in);
-            String rewardMilestone;
-            int verification;
-            int choice;
+        String rewardMilestone;
+        int verification;
+        int choice;
 
-            System.out.println("Choose the reward for each milestone:");
-            System.out.println("50 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[0][1] = rewardMilestone;
-            System.out.println("100 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[1][1] = rewardMilestone;
-            System.out.println("300 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[2][1] = rewardMilestone;
-            System.out.println("500 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[3][1] = rewardMilestone;
-            System.out.println("800 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[4][1] = rewardMilestone;
-            System.out.println("1000 points: ");
-            rewardMilestone = input.nextLine();
-            milestone.milestonePointsRewards[5][1] = rewardMilestone;
-            showMilestones(milestone);
-            while (verifiedMilestones == false) {
+        System.out.println("Choose the reward for each milestone:");
+        System.out.println("50 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[0][1] = rewardMilestone;
+        System.out.println("100 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[1][1] = rewardMilestone;
+        System.out.println("300 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[2][1] = rewardMilestone;
+        System.out.println("500 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[3][1] = rewardMilestone;
+        System.out.println("800 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[4][1] = rewardMilestone;
+        System.out.println("1000 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[5][1] = rewardMilestone;
+        showMilestones(milestone);
+        while (verifiedMilestones == false) {
+            System.out.println(
+                    "If your entries are valid, please press on 1, if not, please press 2\nIf your entries aren't valid, please choose the corresponding entry that is wrong:");
+            verification = input.nextInt();
+            if (verification == 1)
+                verifiedMilestones = true;
+            else if (verification == 2) {
                 System.out.println(
-                        "If your entries are valid, please press on 1, if not, please press 2\nIf your entries aren't valid, please choose the corresponding entry that is wrong:");
-                verification = input.nextInt();
-                if (verification == 1)
-                    verifiedMilestones = true;
-                else if (verification == 2) {
-                    System.out.println(
-                            "Please choose :"
-                                    + "\n 1 - 50 points"
-                                    + "\n 2 - 100 points"
-                                    + "\n 3 - 300 points"
-                                    + "\n 4 - 500 points"
-                                    + "\n 5 - 800 points"
-                                    + "\n 6 - 1000 points");
-                }
+                        "Please choose :"
+                                + "\n 1 - 50 points"
+                                + "\n 2 - 100 points"
+                                + "\n 3 - 300 points"
+                                + "\n 4 - 500 points"
+                                + "\n 5 - 800 points"
+                                + "\n 6 - 1000 points");
                 choice = input.nextInt();
                 if (choice == 1) {
                     System.out.println("50 points:");
@@ -136,9 +135,11 @@ public class ApplicationProgram {
                                     + "6 - 1000 points");
                 }
             }
-            System.out.println(
-                "Awesome! All of your entries have been saved! Now, we're just going to save all of your data and you'll be all good to go!");
         }
+        System.out.println(
+                "Awesome! All of your entries have been saved! Now, we're just going to save all of your data and you'll be all good to go!");
+    }
+
     public static void showMilestones(Milestone pfMilestone) {
         System.out.println("So your milestones are:");
         for (int i = 0; i < 6; i++) {
@@ -146,71 +147,71 @@ public class ApplicationProgram {
                     pfMilestone.milestonePointsRewards[i][0] + " points : " + pfMilestone.milestonePointsRewards[i][1]);
         }
     }
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
     /*---------------------------------- User ---------------------------------*/
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     public static void userInformation(User pfUser) {
         Scanner input = new Scanner(System.in);
-            boolean confirmation_User = false;
+        boolean confirmation_User = false;
 
-            System.out.println("Your username:");
-            pfUser.username = input.nextLine();
-            System.out.println("Your first name:");
-            pfUser.firstName = input.nextLine();
-            System.out.println("Your last name:");
-            pfUser.lastName = input.nextLine();
-            System.out.println("Your age:");
-            pfUser.age = input.nextInt();
-            System.out.println("Your gender:\n1 - Male\n2 - Female\n3 - Other");
-            pfUser.gender = input.nextInt();
-            while (confirmation_User) {
+        System.out.println("Your username:");
+        pfUser.username = input.nextLine();
+        System.out.println("Your first name:");
+        pfUser.firstName = input.nextLine();
+        System.out.println("Your last name:");
+        pfUser.lastName = input.nextLine();
+        System.out.println("Your age:");
+        pfUser.age = input.nextInt();
+        System.out.println("Your gender:\n1 - Male\n2 - Female\n3 - Other");
+        pfUser.gender = input.nextInt();
+        while (confirmation_User) {
+            System.out.println(
+                    "If your entries are valid, please press on 1, if not, please press 2"
+                            + "\nIf your entries aren't valid, please choice the corresponding entry that is wrong:");
+            if (input.nextInt() == 1)
+                confirmation_User = true;
+            else if (input.nextInt() == 2) {
                 System.out.println(
-                        "If your entries are valid, please press on 1, if not, please press 2"
-                                + "\nIf your entries aren't valid, please choice the corresponding entry that is wrong:");
-                if (input.nextInt() == 1)
-                    confirmation_User = true;
-                else if (input.nextInt() == 2) {
-                    System.out.println(
-                            "Please choose :"
-                                    + "1 - Username"
-                                    + "2 - First name"
-                                    + "3 - Last name"
-                                    + "4 - Age"
-                                    + "5 - Gender");
-                }
-                switch (input.nextInt()) {
-                    case 1:
-                        System.out.println("Your username:");
-                        pfUser.username = input.nextLine();
-                        break;
-                    case 2:
-                        System.out.println("Your first name:");
-                        pfUser.username = input.nextLine();
-                        break;
-                    case 3:
-                        System.out.println("Your last name:");
-                        pfUser.username = input.nextLine();
-                        break;
-                    case 4:
-                        System.out.println("Your age:");
-                        pfUser.username = input.nextLine();
-                        break;
-                    case 5:
-                        System.out.println("Your gender:");
-                        pfUser.username = input.nextLine();
-                        break;
-                    default:
-                        System.out.println("Please enter either:"
+                        "Please choose :"
                                 + "1 - Username"
                                 + "2 - First name"
                                 + "3 - Last name"
                                 + "4 - Age"
                                 + "5 - Gender");
-                        break;
-                }
+            }
+            switch (input.nextInt()) {
+                case 1:
+                    System.out.println("Your username:");
+                    pfUser.username = input.nextLine();
+                    break;
+                case 2:
+                    System.out.println("Your first name:");
+                    pfUser.username = input.nextLine();
+                    break;
+                case 3:
+                    System.out.println("Your last name:");
+                    pfUser.username = input.nextLine();
+                    break;
+                case 4:
+                    System.out.println("Your age:");
+                    pfUser.username = input.nextLine();
+                    break;
+                case 5:
+                    System.out.println("Your gender:");
+                    pfUser.username = input.nextLine();
+                    break;
+                default:
+                    System.out.println("Please enter either:"
+                            + "1 - Username"
+                            + "2 - First name"
+                            + "3 - Last name"
+                            + "4 - Age"
+                            + "5 - Gender");
+                    break;
             }
         }
+    }
 
     public static String getuName(User User) {
         return User.username;
@@ -231,9 +232,9 @@ public class ApplicationProgram {
     public static int getG(User User) {
         return User.gender;
     }
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
     /*---------------------------------- Tasks ---------------------------------*/
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     public static void showTasks(Task pfTask) {
         for (int i = 0; i < getNbrTasks(pfTask); i++)
@@ -242,28 +243,28 @@ public class ApplicationProgram {
 
     public static void saveTasks(Task pfTasks) {
         Scanner input = new Scanner(System.in);
-            System.out.println(
-                    "Now, let's save all of the tasks that you would like to keep track of.");
-            int i = 0;
-            String Task;
-            while (i < getNbrTasks(pfTasks)) {
-                System.out.println("Task n°" + (i + 1) + "/" + getNbrTasks(pfTasks));
-                Task = input.nextLine();
-                System.out.println("The task is : " + Task);
-                pfTasks.arrayTasks[i][0] = Task;
-                i++;
-            }
-            System.out.println("Now, let's associate a difficult for each task");
-            int j = 0;
-            String Difficulty;
-            while (j < getNbrTasks(pfTasks)) {
-                System.out.println("The difficulty of task n°" + (j + 1) + " is : " + pfTasks.arrayTasks[j][0]);
-                Difficulty = "" + input.nextInt();
-                System.out.println("The difficulty is : " + Difficulty);
-                pfTasks.arrayTasks[j][1] = Difficulty;
-                j++;
-            }
+        System.out.println(
+                "Now, let's save all of the tasks that you would like to keep track of.");
+        int i = 0;
+        String Task;
+        while (i < getNbrTasks(pfTasks)) {
+            System.out.println("Task n°" + (i + 1) + "/" + getNbrTasks(pfTasks));
+            Task = input.nextLine();
+            System.out.println("The task is : " + Task);
+            pfTasks.arrayTasks[i][0] = Task;
+            i++;
         }
+        System.out.println("Now, let's associate a difficult for each task");
+        int j = 0;
+        String Difficulty;
+        while (j < getNbrTasks(pfTasks)) {
+            System.out.println("The difficulty of task n°" + (j + 1) + " is : " + pfTasks.arrayTasks[j][0]);
+            Difficulty = "" + input.nextInt();
+            System.out.println("The difficulty is : " + Difficulty);
+            pfTasks.arrayTasks[j][1] = Difficulty;
+            j++;
+        }
+    }
 
     public static Task createTaskTree() {
         boolean validInputs = false;
@@ -271,18 +272,18 @@ public class ApplicationProgram {
 
         System.out.println("How many tasks would you like to keep track of? Please enter a whole number");
         Scanner input = new Scanner(System.in);
-            nbrTasks = input.nextInt();
-            Task tasks = new Task(nbrTasks);
-            while (validInputs == false) {
-                saveTasks(tasks);
-                showTasks(tasks);
-                System.out.println("Is this correct?\n1 - Yes\n2 - No");
-                if (input.nextInt() == 1) {
-                    validInputs = true;
-                }
+        nbrTasks = input.nextInt();
+        Task tasks = new Task(nbrTasks);
+        while (validInputs == false) {
+            saveTasks(tasks);
+            showTasks(tasks);
+            System.out.println("Is this correct?\n1 - Yes\n2 - No");
+            if (input.nextInt() == 1) {
+                validInputs = true;
             }
+        }
 
-            return tasks;
+        return tasks;
     }
 
     public static int getNbrTasks(Task tasks) {
@@ -297,9 +298,9 @@ public class ApplicationProgram {
         return tasks.arrayTasks[line][1];
     }
 
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
     /*---------------------------------- File ---------------------------------*/
-        /*-------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     public static File createFile(String pfFileName) throws IOException {
         File createFile = new File(pfFileName);
@@ -313,7 +314,7 @@ public class ApplicationProgram {
 
     public static void writeToFile(String dataToSave, File pfFileNameFile) throws IOException {
         FileWriter saveToFile = new FileWriter(pfFileNameFile);
-            saveToFile.write(dataToSave);
+        saveToFile.write(dataToSave);
     }
 
     public static void saveTasksToFile(Task tasksToFiles, File pfFileNameFile) throws IOException {
