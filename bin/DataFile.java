@@ -15,7 +15,8 @@ public class DataFile {
     }
 
     public static void writeToFile(String dataToSave) throws IOException{
-        FileWriter saveToFile = new FileWriter("uData.txt");
-        saveToFile.write(dataToSave);
+        try (FileWriter saveToFile = new FileWriter("uData.txt")) {
+            saveToFile.write(dataToSave);
+        }
     }
 }
