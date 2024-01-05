@@ -40,13 +40,16 @@ public class ApplicationProgram {
                             + "\n    800 points"
                             + "\n    1000 points");
             milestonesRewardsAndInfoInit();
-            String file = "uData.txt";
-            writeToFile(account.username, file);
-            writeToFile(account.firstName, file);
-            writeToFile(account.lastName, file);
-            writeToFile("" + account.age, file);
-            writeToFile("" + account.gender, file);
-            saveTasksToFile(tasks, file);
+            /*
+             * 
+             String file = "uData.txt";
+             writeToFile(account.username, file);
+             writeToFile(account.firstName, file);
+             writeToFile(account.lastName, file);
+             writeToFile("" + account.age, file);
+             writeToFile("" + account.gender, file);
+             saveTasksToFile(tasks, file);
+             */
         }
     }
 
@@ -299,7 +302,7 @@ public class ApplicationProgram {
 
     /*-------------------------------------------------------------------*/
     /*---------------------------------- File ---------------------------------*/
-    /*-------------------------------------------------------------------*/
+    /*---------------------------------- À NE PAS PRENDRE EN COMPTE PARCE QUE ÇA NE MARCHE PAS ET CHA N'ENERVE ---------------------------------*/
 
     public static void writeToFile(String dataToSave, String pfFileNameFile) throws IOException {
         PrintStream saveToFile = new PrintStream(pfFileNameFile);
