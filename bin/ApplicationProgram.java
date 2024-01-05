@@ -58,7 +58,7 @@ public class ApplicationProgram {
     public static void milestonesRewardsAndInfoInit() {
         Milestone milestone = new Milestone();
         boolean verifiedMilestones = false;
-        try (Scanner input = new Scanner(System.in)) {
+        Scanner input = new Scanner(System.in);
             String rewardMilestone;
             int verification;
             int choice;
@@ -136,11 +136,9 @@ public class ApplicationProgram {
                                     + "6 - 1000 points");
                 }
             }
-        }
-        System.out.println(
+            System.out.println(
                 "Awesome! All of your entries have been saved! Now, we're just going to save all of your data and you'll be all good to go!");
-    }
-
+        }
     public static void showMilestones(Milestone pfMilestone) {
         System.out.println("So your milestones are:");
         for (int i = 0; i < 6; i++) {
@@ -153,7 +151,7 @@ public class ApplicationProgram {
         /*-------------------------------------------------------------------*/
 
     public static void userInformation(User pfUser) {
-        try (Scanner input = new Scanner(System.in)) {
+        Scanner input = new Scanner(System.in);
             boolean confirmation_User = false;
 
             System.out.println("Your username:");
@@ -213,7 +211,6 @@ public class ApplicationProgram {
                 }
             }
         }
-    }
 
     public static String getuName(User User) {
         return User.username;
@@ -244,7 +241,7 @@ public class ApplicationProgram {
     }
 
     public static void saveTasks(Task pfTasks) {
-        try (Scanner input = new Scanner(System.in)) {
+        Scanner input = new Scanner(System.in);
             System.out.println(
                     "Now, let's save all of the tasks that you would like to keep track of.");
             int i = 0;
@@ -267,14 +264,13 @@ public class ApplicationProgram {
                 j++;
             }
         }
-    }
 
     public static Task createTaskTree() {
         boolean validInputs = false;
         int nbrTasks;
 
         System.out.println("How many tasks would you like to keep track of? Please enter a whole number");
-        try (Scanner input = new Scanner(System.in)) {
+        Scanner input = new Scanner(System.in);
             nbrTasks = input.nextInt();
             Task tasks = new Task(nbrTasks);
             while (validInputs == false) {
@@ -287,7 +283,6 @@ public class ApplicationProgram {
             }
 
             return tasks;
-        }
     }
 
     public static int getNbrTasks(Task tasks) {
@@ -317,9 +312,8 @@ public class ApplicationProgram {
     }
 
     public static void writeToFile(String dataToSave, File pfFileNameFile) throws IOException {
-        try (FileWriter saveToFile = new FileWriter(pfFileNameFile)) {
+        FileWriter saveToFile = new FileWriter(pfFileNameFile);
             saveToFile.write(dataToSave);
-        }
     }
 
     public static void saveTasksToFile(Task tasksToFiles, File pfFileNameFile) throws IOException {
