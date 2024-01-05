@@ -38,79 +38,100 @@ public class ApplicationProgram {
         milestonesRewardsAndInfoInit();
     }
 
+    /*---------------------------------- Milestones ---------------------------------*/
     public static void milestonesRewardsAndInfoInit() {
         Milestone milestone = new Milestone();
         boolean verifiedMilestones = false;
-        System.out.println("Choose the reward for each milestone:");
         Scanner input = new Scanner(System.in);
         String rewardMilestone;
+        int verification;
+        int choice;
 
-        for (int i = 0; i < 0; i++) {
-            System.out.println(milestone.milestonePointsRewards[i][0] + " points: ");
-            rewardMilestone = input.nextLine();
-            milestone.setReward(rewardMilestone, i);
-        }
+        System.out.println("Choose the reward for each milestone:");
+        System.out.println("50 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[0][1] = rewardMilestone;
+        System.out.println("100 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[1][1] = rewardMilestone;
+        System.out.println("300 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[2][1] = rewardMilestone;
+        System.out.println("500 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[3][1] = rewardMilestone;
+        System.out.println("800 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[4][1] = rewardMilestone;
+        System.out.println("1000 points: ");
+        rewardMilestone = input.nextLine();
+        milestone.milestonePointsRewards[5][1] = rewardMilestone;
+        showMilestones(milestone);
         while (verifiedMilestones == false) {
-            while (verifiedMilestones) {
+            System.out.println(
+                    "If your entries are valid, please press on 1, if not, please press 2\nIf your entries aren't valid, please choose the corresponding entry that is wrong:");
+            verification = input.nextInt();
+            if (verification == 1)
+                verifiedMilestones = true;
+            else if (verification == 2) {
                 System.out.println(
-                        "If your entries are valid, please press on 1, if not, please press 2\nIf your entries aren't valid, please choice the corresponding entry that is wrong:");
-                if (input.nextInt() == 1)
-                    verifiedMilestones = true;
-                else if (input.nextInt() == 2) {
-                    System.out.println(
-                            "Please choose :"
-                                    + "50 points"
-                                    + "100 points"
-                                    + "300 points"
-                                    + "500 points"
-                                    + "800 points"
-                                    + "1000 points");
-                }
-                switch (input.nextInt()) {
-                    case 1:
-                        System.out.println("50 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 0);
-                        break;
-                    case 2:
-                        System.out.println("100 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 1);
-                        break;
-                    case 3:
-                        System.out.println("300 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 2);
-                        break;
-                    case 4:
-                        System.out.println("500 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 3);
-                        break;
-                    case 5:
-                        System.out.println("800 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 4);
-                        break;
-                    case 6:
-                        System.out.println("1000 points:");
-                        rewardMilestone = input.nextLine();
-                        milestone.setReward(rewardMilestone, 5);
-                        break;
-                    default:
-                        System.out.println(
-                            "Please choose :"
-                                    + "50 points"
-                                    + "100 points"
-                                    + "300 points"
-                                    + "500 points"
-                                    + "800 points"
-                                    + "1000 points");
-                        break;
-                }
+                        "Please choose :"
+                                + "\n 1 - 50 points"
+                                + "\n 2 - 100 points"
+                                + "\n 3 - 300 points"
+                                + "\n 4 - 500 points"
+                                + "\n 5 - 800 points"
+                                + "\n 6 - 1000 points");
+            }
+            choice = input.nextInt();
+            if (choice == 1) {
+                System.out.println("50 points:");
+                rewardMilestone = input.nextLine();
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[0][1] = rewardMilestone;
+            } else if (choice == 2) {
+                System.out.println("100 points:");
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[1][1] = rewardMilestone;
+            } else if (choice == 3) {
+                System.out.println("300 points:");
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[2][1] = rewardMilestone;
+            } else if (choice == 4) {
+                System.out.println("500 points:");
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[3][1] = rewardMilestone;
+            } else if (choice == 5) {
+                System.out.println("800 points:");
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[4][1] = rewardMilestone;
+            } else if (choice == 6) {
+                System.out.println("1000 points:");
+                rewardMilestone = input.nextLine();
+                milestone.milestonePointsRewards[5][1] = rewardMilestone;
+            } else {
+                System.out.println(
+                        "Please choose :"
+                                + "1 - 50 points"
+                                + "2 - 100 points"
+                                + "3 - 300 points"
+                                + "4 - 500 points"
+                                + "5 - 800 points"
+                                + "6 - 1000 points");
             }
         }
     }
+
+    public static void showMilestones(Milestone pfMilestone) {
+        System.out.println("So your milestones are:");
+        for (int i = 0; i < 6; i++) {
+            System.out.println(
+                    pfMilestone.milestonePointsRewards[i][0] + " points : " + pfMilestone.milestonePointsRewards[i][1]);
+        }
+    }
+    /*-------------------------------------------------------------------*/
+    /*---------------------------------- User ---------------------------------*/
+    /*-------------------------------------------------------------------*/
 
     public static void userInformation(User pfUser) {
         Scanner input = new Scanner(System.in);
@@ -129,8 +150,9 @@ public class ApplicationProgram {
         pfUser.age = input.nextInt();
         System.out.println("Your gender:\n1 - Male\n2 - Female\n3 - Other");
         pfUser.gender = input.nextInt();
-        while (confirmation_User) {
+        while (passwordConfirmed == false) {
             System.out.println("Your password:");
+            passwordVerif1 = input.nextLine();
             passwordVerif1 = input.nextLine();
             System.out.println("Confirm your password:");
             passwordVerif2 = input.nextLine();
@@ -186,6 +208,33 @@ public class ApplicationProgram {
         }
     }
 
+    public static String getID(User User) {
+        return User.userId;
+    }
+
+    public static String getuName(User User) {
+        return User.username;
+    }
+
+    public static String getfName(User User) {
+        return User.firstName;
+    }
+
+    public static String getlName(User User) {
+        return User.lastName;
+    }
+
+    public static int getA(User User) {
+        return User.age;
+    }
+
+    public static int getG(User User) {
+        return User.gender;
+    }
+    /*-------------------------------------------------------------------*/
+    /*---------------------------------- Tasks ---------------------------------*/
+    /*-------------------------------------------------------------------*/
+
     public static void showTasks(Task pfTask) {
         for (int i = 0; i < getNbrTasks(pfTask); i++)
             System.out.println(pfTask.arrayTasks[i][0] + " : " + pfTask.arrayTasks[i][1]);
@@ -209,7 +258,7 @@ public class ApplicationProgram {
         String Difficulty;
         while (j < getNbrTasks(pfTasks)) {
             System.out.println("The difficulty of task n°" + (j + 1) + " is : " + pfTasks.arrayTasks[j][0]);
-            Difficulty = input.nextLine();
+            Difficulty = "" + input.nextInt();
             System.out.println("The difficulty is : " + Difficulty);
             pfTasks.arrayTasks[j][1] = Difficulty;
             j++;
@@ -249,29 +298,4 @@ public class ApplicationProgram {
         return tasks.arrayTasks[line][1];
     }
 
-    /*-------------------------------------------------------------------*/
-
-    public static String getID(User User) {
-        return User.userId;
-    }
-
-    public static String getuName(User User) {
-        return User.username;
-    }
-
-    public static String getfName(User User) {
-        return User.firstName;
-    }
-
-    public static String getlName(User User) {
-        return User.lastName;
-    }
-
-    public static int getA(User User) {
-        return User.age;
-    }
-
-    public static int getG(User User) {
-        return User.gender;
-    }
 }
