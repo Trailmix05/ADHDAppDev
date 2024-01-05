@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class ApplicationProgram {
     public static void main(String[] args) throws IOException {
@@ -40,16 +39,15 @@ public class ApplicationProgram {
                             + "\n    500 points"
                             + "\n    800 points"
                             + "\n    1000 points");
-
+            milestonesRewardsAndInfoInit();
+            String file = "uData.txt";
+            writeToFile(account.username, file);
+            writeToFile(account.firstName, file);
+            writeToFile(account.lastName, file);
+            writeToFile("" + account.age, file);
+            writeToFile("" + account.gender, file);
+            saveTasksToFile(tasks, file);
         }
-        milestonesRewardsAndInfoInit();
-        f = createFile("uData.txt");
-        writeToFile(account.username, f);
-        writeToFile(account.firstName, f);
-        writeToFile(account.lastName, f);
-        writeToFile("" + account.age, f);
-        writeToFile("" + account.gender, f);
-
     }
 
     /*-------------------------------------------------------------------*/
@@ -254,7 +252,8 @@ public class ApplicationProgram {
             pfTasks.arrayTasks[i][0] = Task;
             i++;
         }
-        System.out.println("Now, let's associate a difficult for each task");
+        System.out.println(
+                "Now, let's associate a difficult for each task (the difficulty scales from 1 to 10; 1 is the easiest and 10 the hardest)");
         int j = 0;
         String Difficulty;
         while (j < getNbrTasks(pfTasks)) {
@@ -302,22 +301,14 @@ public class ApplicationProgram {
     /*---------------------------------- File ---------------------------------*/
     /*-------------------------------------------------------------------*/
 
-    public static File createFile(String pfFileName) throws IOException {
-        File createFile = new File(pfFileName);
-        if (createFile.createNewFile()) {
-            System.out.println("File created");
-        } else {
-            System.out.println("File already exists");
-        }
-        return createFile;
+    public static void writeToFile(String dataToSave, String pfFileNameFile) throws IOException {
+        PrintStream saveToFile = new PrintStream(pfFileNameFile);
+        saveToFile.println(dataToSave);
+        saveToFile.close();
+        System.out.println("File successfully written");
     }
 
-    public static void writeToFile(String dataToSave, File pfFileNameFile) throws IOException {
-        FileWriter saveToFile = new FileWriter(pfFileNameFile);
-        saveToFile.write(dataToSave);
-    }
-
-    public static void saveTasksToFile(Task tasksToFiles, File pfFileNameFile) throws IOException {
+    public static void saveTasksToFile(Task tasksToFiles, String pfFileNameFile) throws IOException {
         int len = tasksToFiles.nbrLines;
         for (int i = 0; i < len; i++) {
             writeToFile("Task:" + tasksToFiles.arrayTasks[i][0], pfFileNameFile);
